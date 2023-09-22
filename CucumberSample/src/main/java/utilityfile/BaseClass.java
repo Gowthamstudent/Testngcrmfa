@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.sound.midi.SysexMessage;
@@ -27,11 +28,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 //import org.testng.annotations.Parameters;
+import org.openqa.selenium.support.ui.Select;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+
+
 
 //import utilityt.Datautils;
 
 public class BaseClass {
-	static WebDriver driver;
+	protected static WebDriver driver;
+	//public ExtentSparkReporter spark;
+	//public ExtentReports report;
     //@Parameters({"browser"})
 	public void browser() {
 
@@ -62,6 +72,11 @@ public void quitb() {
 		return name;
 	}
 
+	public void dropdown(WebElement element, String vistext ) {
+		 Select sd = new Select(element);
+		 sd.selectByVisibleText(vistext);
+		 //return sd; 
+	 }
 	public WebElement xpathlocator(String xpathn) {
 		WebElement xpathname = driver.findElement(By.xpath(xpathn));
 		return xpathname;
@@ -89,15 +104,25 @@ public void quitb() {
 		}
 	}
 
-	public void windowhandle() {
+	public String title() {
+		String title = driver.getTitle();
+		System.out.println(title);
+		return title;
+	}
+	public void windowhandle(int num) {
 		String Parentwindow = driver.getWindowHandle();
 		Set<String> allwindow = driver.getWindowHandles();
 		ArrayList<String> alltab = new ArrayList<String>(allwindow);
-		driver.switchTo().window(alltab.get(1));
+		driver.switchTo().window(alltab.get(num));
+		{
+			String title = driver.getCurrentUrl();
+			System.out.println("Current URl Child is: " + title);
+			childclassoperation.childopera();
+		}
+		driver.switchTo().window(Parentwindow);
 		String title = driver.getCurrentUrl();
-		System.out.println("Current URl Child is: " + title);
-		// Thread.sleep(5000);
-	}
+		System.out.println("Current URl is: " + title);
+		}
 
 	public String excelRead(String sheet, int row, int cell) throws IOException {
 		// String value=null;
@@ -114,9 +139,10 @@ public void quitb() {
 		return CellValue;
 
 	}
- public void screenshotA(String screenName) {
+ public String screenshotA(String screenName) {
 	 File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	 File dest = new File("./ScreenS/"+screenName+".png");
+	 String destlo = "./ScreenS/"+screenName+".png";
+	 File dest = new File(destlo);
 	 try {
 		FileUtils.copyFile(source, dest);
 	} catch (IOException e) {
@@ -124,7 +150,7 @@ public void quitb() {
 		e.printStackTrace();
 	}
 	 //FileHandler.copy(source, dest);
-	 
+	 return destlo;
  }
 
 public void sendKeys(CharSequence[] charSequences) {
@@ -132,5 +158,10 @@ public void sendKeys(CharSequence[] charSequences) {
 	CharSequence name = null;
 	// TODO Auto-generated method stub
 	element.sendKeys(name);
+}
+
+public List<WebElement> xpathelemnts(String xnames) {
+	List<WebElement> xNames = driver.findElements(By.xpath(xnames));
+	return xNames;
 }
 }

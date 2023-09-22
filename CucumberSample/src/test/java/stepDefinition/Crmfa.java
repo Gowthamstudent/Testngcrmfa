@@ -7,27 +7,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.model.Report;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilityfile.BaseClass;
+
 //import testNg.BaseClass;
 
 public class Crmfa {
-	BaseClass b = new BaseClass();
-	String screenName;
-	WebDriver driver;
-	@Given("user launch the browser and website")
-	public void user_is_already_on_login_page() {
-		BaseClass b = new BaseClass();
-		b.browser();
-		b.MasterUrl();
-		
-	}
+	BaseClass b= new BaseClass();
+	
+
+	//WebDriver driver;
+	/*
+	 * @Given("user launch the browser and website") public void
+	 * user_is_already_on_login_page() {
+	 * 
+	 * 
+	 * }
+	 */
 
 	@When("user enter username and password") //\"(.*)\"
 	public void title_of_login_page_is_crm(DataTable cred  ) {
+		
 		WebElement user = b.idLocator("username");
 		WebElement passw = b.idLocator("password");
 		List<List<String>> data = cred.asLists(); //cred.cells();
@@ -43,8 +49,14 @@ public class Crmfa {
 		WebElement fin = b.classnamelocator("decorativeSubmit");
 		b.clickM(fin);
 		b.sleep(1000);
-		b.screenshotA(screenName);
-		
+		b.screenshotA("Main Page");
+		b.title();
+        if(b.title().equals("Leaftaps - TestLeaf Automation Platform")) {
+        	System.out.println("Datai is Fine");
+        }else {
+        	System.out.println(" Not Logicaly proven");
+        }
+
 	}
 
 	@Then("user mainpage and enter in create lead page")
@@ -53,6 +65,7 @@ public class Crmfa {
 		b.clickM(but);
 		WebElement Clead = b.xpathlocator("//a[text()='Create Lead']");
 		b.clickM(Clead);
+		b.screenshotA("Create Lead Page");
 	}
 
 	@Then("user fill company name")
@@ -61,20 +74,24 @@ public class Crmfa {
 		b.sendkeys(Formfill, "Azees&Co");
 		WebElement wind = b.xpathlocator("//input[@id='createLeadForm_parentPartyId']/following::a[1]");
 		b.clickM(wind);
-		b.windowhandle();
-		b.sleep(5000);
+		b.windowhandle(1);
+		b.sleep(1000);
 		// driver.findElement(By.xpath("//input[@name='id']")).sendKeys("10477");
-		WebElement comp = b.nameloc("accountName");
-		b.sendkeys(comp, "Credit Limited Account");
-		b.xpathlocator("//button[text()='Find Accounts']").click();
-		// b.xpathlocator("//a[text()='10477']").click(); b.sleep(5000);
-		b.sleep(3000);
-		b.xpathlocator("//a[text()='Credit Limited Account']").click();
+		/*
+		 * WebElement comp = b.nameloc("accountName"); b.sendkeys(comp,
+		 * "Credit Limited Account");
+		 * b.xpathlocator("//button[text()='Find Accounts']").click(); //
+		 * b.xpathlocator("//a[text()='10477']").click(); b.sleep(5000); b.sleep(3000);
+		 * b.xpathlocator("//a[text()='Credit Limited Account']").click();
+		 */
+		WebElement drop = b.nameloc("dataSourceId");
+		//b.screenshotA("final");
+		b.dropdown(drop, "Cold Ca");
 	}
 
 	@Then("user exit browser")
 	public void user_is_on_homepage() {
-		
+
 		b.quitb();
 	}
 

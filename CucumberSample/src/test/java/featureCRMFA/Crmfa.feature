@@ -3,7 +3,7 @@ Feature: Validating Website
 Scenario: Verify website is working
 
 
-Given user launch the browser and website 
+
 When user enter username and password
 |username|password|
 |DemoSalesManager|crmsfa |

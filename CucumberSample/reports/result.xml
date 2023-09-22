@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="14.685">
+<testcase classname="Validating Website" name="Verify website is working" time="14.217">
+<failure message="Cannot locate option with text: Cold Ca&#10;For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception&#10;Build info: version: '4.11.0', revision: '040bc5406b'&#10;System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException"><![CDATA[When user enter username and password.......................................passed
+Then user mainpage and enter in create lead page............................passed
+And user fill company name..................................................failed
+And user exit browser.......................................................skipped
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: Cannot locate option with text: Cold Ca
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:153)
+	at utilityfile.BaseClass.dropdown(BaseClass.java:77)
+	at stepDefinition.Crmfa.user_clicks_login_button(Crmfa.java:89)
+	at ✽.user fill company name(file:///G:/Eclipse_Work_Space/CucumberSample/src/test/java/featureCRMFA/Crmfa.feature:11)
+]]></failure>
+</testcase>
+</testsuite>
