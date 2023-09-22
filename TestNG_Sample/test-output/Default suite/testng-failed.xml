@@ -5,7 +5,10 @@
     <classes>
       <class name="testNg.Login">
         <methods>
+          <include name="launchreport"/>
           <include name="testmain"/>
+          <include name="savereport"/>
+          <include name="stat"/>
           <include name="LaunchBrowser"/>
         </methods>
       </class> <!-- testNg.Login -->

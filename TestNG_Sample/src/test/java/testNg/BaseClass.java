@@ -129,9 +129,10 @@ public class BaseClass {
 		return CellValue;
 
 	}
- public  void screenshotA(String screenName) {
+ public  String screenshotA(String screenName) {
 	 File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	 File dest = new File("./ScreenS/"+screenName+".png");
+	 String destl = "./ScreenS/"+screenName+".png";
+	 File dest = new File(destl);
 	 try {
 		FileUtils.copyFile(source, dest);
 	} catch (IOException e) {
@@ -139,6 +140,7 @@ public class BaseClass {
 		e.printStackTrace();
 	}
 	 //FileHandler.copy(source, dest);
+	 return destl;
 	}
  public void dropdown(WebElement element, String vistext ) {
 	 Select sd = new Select(element);

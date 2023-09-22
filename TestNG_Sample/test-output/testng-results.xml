@@ -1,54 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="19757" started-at="2023-09-06T12:44:07Z" finished-at="2023-09-06T12:44:27Z">
+  <suite name="Default suite" duration-ms="16370" started-at="2023-09-20T09:03:40Z" finished-at="2023-09-20T09:03:56Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="19757" started-at="2023-09-06T12:44:07Z" finished-at="2023-09-06T12:44:27Z">
+    <test name="Default test" duration-ms="16370" started-at="2023-09-20T09:03:40Z" finished-at="2023-09-20T09:03:56Z">
       <class name="testNg.Login">
-        <test-method status="PASS" signature="LaunchBrowser()[pri:0, instance:testNg.Login@7c729a55]" name="LaunchBrowser" is-config="true" duration-ms="7799" started-at="2023-09-06T12:44:07Z" finished-at="2023-09-06T12:44:15Z">
+        <test-method status="PASS" signature="launchreport()[pri:0, instance:testNg.Login@4f18837a]" name="launchreport" is-config="true" duration-ms="360" started-at="2023-09-20T09:03:39Z" finished-at="2023-09-20T09:03:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchreport -->
+        <test-method status="PASS" signature="LaunchBrowser()[pri:0, instance:testNg.Login@4f18837a]" name="LaunchBrowser" is-config="true" duration-ms="5917" started-at="2023-09-20T09:03:40Z" finished-at="2023-09-20T09:03:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LaunchBrowser -->
-        <test-method status="FAIL" signature="testmain()[pri:0, instance:testNg.Login@7c729a55]" name="testmain" duration-ms="11791" started-at="2023-09-06T12:44:15Z" finished-at="2023-09-06T12:44:27Z">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[Cannot locate option with text: Cold Ca
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
-Driver info: driver.version: unknown]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: Cannot locate option with text: Cold Ca
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_351'
-Driver info: driver.version: unknown
-at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:153)
-at testNg.BaseClass.dropdown(BaseClass.java:144)
-at testNg.Login.testmain(Login.java:65)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
-at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-at java.lang.Thread.run(Unknown Source)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method status="PASS" signature="testmain()[pri:1, instance:testNg.Login@4f18837a]" name="testmain" duration-ms="10391" started-at="2023-09-20T09:03:46Z" finished-at="2023-09-20T09:03:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testmain -->
+        <test-method status="PASS" signature="stat(org.testng.ITestResult)[pri:0, instance:testNg.Login@4f18837a]" name="stat" is-config="true" duration-ms="31" started-at="2023-09-20T09:03:56Z" finished-at="2023-09-20T09:03:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testmain status=SUCCESS method=Login.testmain()[pri:1, instance:testNg.Login@4f18837a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stat -->
+        <test-method status="PASS" signature="savereport()[pri:0, instance:testNg.Login@4f18837a]" name="savereport" is-config="true" duration-ms="391" started-at="2023-09-20T09:03:56Z" finished-at="2023-09-20T09:03:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- savereport -->
       </class> <!-- testNg.Login -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

@@ -1,13 +1,22 @@
 package testNg;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import utilityt.Datautils;
 @Listeners(Customlist.class)
@@ -15,7 +24,21 @@ public class Login extends BaseClass {
 	String screenName;
 	String mainpage;
 	BaseClass b = new BaseClass();
-  
+	ExtentSparkReporter  spark;
+	ExtentReports reports;
+	ExtentTest Testcase;
+	@BeforeSuite
+	public void launchreport() {
+		spark = new ExtentSparkReporter("Testreport.html");
+		reports = new ExtentReports();
+		reports.attachReporter(spark);	
+	}
+	
+	@AfterSuite
+	public void savereport() {
+		reports.flush();
+	}
+	
 	@BeforeMethod
 	public void LaunchBrowser() {
 		b.browser();
@@ -24,7 +47,7 @@ public class Login extends BaseClass {
 
 	// private static final String dataProvider = null;
 	// @Parameters({"ComName","browser"})
-	@Test
+	@Test (priority =1)
 	// (dataProvider = "getdata", dataProviderClass = Datautils.class)
 	public void testmain() throws IOException {
 		// String company ,String brow --> use if @parameter used
@@ -33,6 +56,7 @@ public class Login extends BaseClass {
 		// from Excel
 		// System.out.println(" passwordis:" + data[1]);
 
+	    Testcase = reports.createTest(" Login Page ");
 		WebElement user = b.idLocator("username");
 		b.sendkeys(user, b.excelRead("TData", 1, 0));
 
@@ -45,6 +69,11 @@ public class Login extends BaseClass {
 		WebElement but = b.idLocator("button");
 		b.clickM(but);
 		b.screenshotA("Abirami");
+		/*
+		 * }
+		 * 
+		 * @Test (priority =2) public void createLead() {
+		 */
 		WebElement Clead = b.xpathlocator("//a[text()='Create Lead']");
 		b.clickM(Clead);
 		WebElement Formfill = b.idLocator("createLeadForm_companyName");
@@ -62,10 +91,42 @@ public class Login extends BaseClass {
 		 * b.xpathlocator("//a[text()='Debit Limited Account_Carol']").click();
 		 */
 		WebElement drop = b.nameloc("dataSourceId");
-		b.dropdown(drop, "Cold Ca");
+		//b.screenshotA("final");
+		b.dropdown(drop, "Cold Call");
+		
+		/*
+		 * Select dr = new Select(drop); List<WebElement> a = dr.getOptions(); for
+		 * (WebElement a1 : a) { String text = a1.getText(); if }
+		 */
+			 
+		 
 		b.quitb();
+		
+		//Testcase.log(Status.PASS, markup)
+	}
+	
+	
+	@AfterMethod
+	public void stat(ITestResult result) {
+		
+		if(result.getStatus()==ITestResult.FAILURE) {
+			Testcase.log(Status.FAIL, "Testcase failed res" + " " + result.getName());
+			String screen =b.screenshotA(result.getName());
+			Testcase.addScreenCaptureFromPath(screen);
+			
+		}
+		else if (result.getStatus()==ITestResult.SUCCESS){
+			Testcase.log(Status.PASS, "Testcase passed res" + result.getName());
+		}
+		else if (result.getStatus()==ITestResult.SKIP){
+			Testcase.log(Status.SKIP, "Testcase skipped res" + result.getName());
+		}
+		
 	}
 
+	
+	
+	
 	
 	/*
 	 * @AfterMethod public void failedscre(ITestResult result) {
