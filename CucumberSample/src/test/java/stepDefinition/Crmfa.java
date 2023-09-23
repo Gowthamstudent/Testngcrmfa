@@ -86,7 +86,7 @@ public class Crmfa {
 		 */
 		WebElement drop = b.nameloc("dataSourceId");
 		//b.screenshotA("final");
-		b.dropdown(drop, "Cold Ca");
+		b.dropdown(drop, "Cold Call");
 	}
 
 	@Then("user exit browser")
